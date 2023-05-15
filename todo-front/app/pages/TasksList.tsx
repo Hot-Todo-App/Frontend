@@ -13,7 +13,6 @@ import Paper from '@mui/material/Paper';
 
 export default function TasksList() {
   const [allTasks, setAllTasks] = useState([]);
-
   useEffect(() => {
     async function fetchAllTasks() {
       const res = await fetch('http://localhost:8080/tasks/getAllTasks');

@@ -12,13 +12,20 @@ export default function CreateTask(){
             "createdAt": date,
             "updatedAt":date,
         }
-        const res = await fetch('http://localhost:8080/tasks/createTask',data);
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }
+        const res = await fetch('http://localhost:8080/tasks/createTask',requestOptions);
         
     }
     return(
         <div>
             <input type="text" value={title} onChange={e=>setTitle(e.target.value)}/>
-            <button onClick={handleCreateTask(title)}>Add Task</button>
+            <button onClick={()=>handleCreateTask(title)}>Add Task</button>
         </div>
     );
 }
