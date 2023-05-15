@@ -1,6 +1,15 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import * as React from 'react';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 
 export default function TasksList() {
   const [allTasks, setAllTasks] = useState([]);
@@ -17,14 +26,20 @@ export default function TasksList() {
   return (
     <div>
       <h3>Tasks List</h3>
-      {allTasks.map((task, index) => (
-        <div key={index}>
-          <h1>Task - {index + 1}</h1>
-          <h1>{task.title}</h1>
-          <h1>{task.updatedAt.split("T")[0] + " " + task.updatedAt.split("T")[1].split(".")[0]}</h1>
-          <h1>Status - {task.status.toString()}</h1>
-        </div>
-      ))}
+      <Paper sx={{ width: '30%', height: '70%', overflow: 'auto', backgroundColor: "lightgreen" }}>
+        <List dense component="div" role="list">
+          {allTasks.map((task, index) => {
+            return (
+              <ListItem key={index} role="listitem" button>
+                <ListItemIcon>
+                  <Checkbox checked={task.status} tabIndex={-1} disableRipple />
+                </ListItemIcon>
+                <ListItemText id={index} primary={task.title} />
+              </ListItem>
+            )
+          })}
+        </List>
+      </Paper>
     </div>
   );
 }
