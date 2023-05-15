@@ -20,7 +20,7 @@ export default function TasksList() {
       setAllTasks(data);
     }
     fetchAllTasks();
-  }, []);
+  }, [allTasks]);
 
   return (
     <div>
