@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import {useRouter} from 'next/router';
+// import { UpdateForm } from '../Components/updateForm';
 
-export default function TaskPage() {
+export default function Details(){
     const [task,setTask] = useState([]);
     const router = useRouter();
 
@@ -39,6 +40,7 @@ export default function TaskPage() {
         <div>
             <h1>{router.query.taskId}</h1>
             <h1>{task.title}</h1>
+            {/* <UpdateForm/> */}
             <button onClick={handleBackToList}>Back To Reality</button>
             <button onClick={deleteTask}>Delete Task</button>
         </div>

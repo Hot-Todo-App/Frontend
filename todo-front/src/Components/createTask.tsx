@@ -12,7 +12,7 @@ export default function CreateTask(){
             const date = new Date();
             const data = {
                 "title": title,
-                "status": true,
+                "status": false,
                 "createdAt": date,
                 "updatedAt":date,
             }
