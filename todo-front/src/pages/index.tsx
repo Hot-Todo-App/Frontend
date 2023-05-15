@@ -1,5 +1,5 @@
-import TasksList from './pages/TasksList';
-import CreateTask from './pages/CreateTask';
+import TasksList from '../Components/tasksList';
+import CreateTask from '../Components/createTask';
 export default function Home() {
   return (
     <div>

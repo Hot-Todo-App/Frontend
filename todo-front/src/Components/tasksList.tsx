@@ -24,7 +24,6 @@ export default function TasksList() {
 
   return (
     <div>
-      <h3>Tasks List</h3>
       <Paper sx={{ width: '30%', height: '70%', overflow: 'auto', backgroundColor: "lightgreen" }}>
         <List dense component="div" role="list">
           {allTasks.map((task, index) => {
