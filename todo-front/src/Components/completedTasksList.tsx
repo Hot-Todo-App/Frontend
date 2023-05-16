@@ -13,11 +13,11 @@ import Paper from '@mui/material/Paper';
 import CommentIcon from '@mui/icons-material/Comment';
 import IconButton from '@mui/material/IconButton';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
-
-export default function CompletedTasksList({allCompletedTasks}){
-      const handleClick = (taskId:string)=>{
-    router.push(`/${taskId}`);
-  }
+export default function CompletedTasksList({allCompletedTasks,getFormattedDate}){
+    const router = useRouter();
+    const handleClick = (taskId:string)=>{
+        router.push(`/${taskId}`);
+    }
   async function handleSetStatus(taskId:string,status:boolean){
     const requestOptions = {
                 method: 'PUT',
@@ -29,6 +29,7 @@ export default function CompletedTasksList({allCompletedTasks}){
     console.log(res)
   }
 
+
     return(
         <div className="child">
             <h1>Completed Tasks - {allCompletedTasks.length}</h1>
@@ -36,14 +37,16 @@ export default function CompletedTasksList({allCompletedTasks}){
         allCompletedTasks.length > 0 && (
         <Paper>
         <List dense component="div" role="list">
-          {allCompletedTasks.map((task, index) => {
+          {allCompletedTasks.sort((a,b)=>{
+            return new Date(b.updatedAt) - new Date(a.updatedAt)
+          }).map((task, index) => {
             return (
               <ListItem 
                 key={task.id}
                 role="listitem" divider
               >
                 <Checkbox checked={task.status} onClick={()=>handleSetStatus(task.id,task.status)}/>
-                <ListItemText  id={index} primary={task.title} />
+                <ListItemText  id={index} primary={task.title} secondary={getFormattedDate(task.updatedAt)} />
                 <Button variant="outlined"  onClick={()=>handleClick(task.id)}>More Info</Button>
               </ListItem>
             )

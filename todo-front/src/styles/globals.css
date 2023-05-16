@@ -8,6 +8,19 @@
   background-color: white;
   justify-content: center;
 }
+.mainPageTask{
+  flex:1;
+  text-align: center;
+  width: 50%;
+  justify-content: center;
+  margin-top:10%;
+  margin-left: 25%;
+  border-radius: 20%;
+}
+.card{
+  background-color: antiquewhite;
+}
+
 .header{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -15,4 +28,13 @@
   flex: 1;
   border: 2px solid blueviolet;
   margin: 10px;
+}
+.child-task{
+  flex: 1;
+  border: 2px solid blueviolet;
+  padding: 10%;
+}
+.mainTask{
+  text-align: center;
+  background-color: white;
 }

@@ -1,14 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import {useRouter} from 'next/router';
 import CompletedTasksList from './completedTasksList';
 import NotCompletedTasksList from './notCompletedTaskList';
 export default function TasksList() {
   
   const [allTasks, setAllTasks] = useState([]);
   const [allCompletedTasks,setAllCompletedTasks] = useState([]);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchAllTasks() {
@@ -25,11 +23,19 @@ export default function TasksList() {
     fetchAllCompletedTasks();
   }, [allTasks,allCompletedTasks]);
 
+
+  function getFormattedDate(date:string){
+    let str = "";
+    const arr = date.split("T")
+    const time = arr[1].split(".")[0]
+    return str + arr[0]  + " (" + time +")"
+  }
+
   return (
     <div>
       <div className="mainFrame">
-        <NotCompletedTasksList allTasks={allTasks}/> 
-        <CompletedTasksList allCompletedTasks={allCompletedTasks}/>
+        <NotCompletedTasksList allTasks={allTasks} getFormattedDate={getFormattedDate}/> 
+        <CompletedTasksList allCompletedTasks={allCompletedTasks} getFormattedDate={getFormattedDate}/>
       </div>
     </div>
   );

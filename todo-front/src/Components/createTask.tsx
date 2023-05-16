@@ -24,6 +24,7 @@ export default function CreateTask(){
                 body: JSON.stringify(data),
             }
             const res = await fetch('http://localhost:8080/tasks/createTask',requestOptions);
+            setErrorText('')
         }
     }
     return(
