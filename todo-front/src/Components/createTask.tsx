@@ -12,7 +12,7 @@ export default function CreateTask(){
             const date = new Date();
             const data = {
                 "title": title,
-                "status": true,
+                "status": false,
                 "createdAt": date,
                 "updatedAt":date,
             }
@@ -24,6 +24,7 @@ export default function CreateTask(){
                 body: JSON.stringify(data),
             }
             const res = await fetch('http://localhost:8080/tasks/createTask',requestOptions);
+            setErrorText('')
         }
     }
     return(
